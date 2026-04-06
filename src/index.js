@@ -7,7 +7,11 @@ const ideaRoutes = require("./routes/ideas");
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://your-app.vercel.app"],
+  }),
+);
 app.use(express.json());
 
 app.use("/ideas", ideaRoutes);
@@ -24,5 +28,5 @@ mongoose
   })
   .catch((err) => {
     console.error("MongoDB connection error:", err);
-    console.log(err)
+    console.log(err);
   });
